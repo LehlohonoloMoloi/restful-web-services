@@ -39,4 +39,10 @@ public class UserServiceImpl implements UserService {
                 .findFirst()
                 .orElse(null);
     }
+
+    @Override
+    public void deleteById(int id) {
+        users.removeIf(user -> user.getId() == id);
+    }
+
 }
