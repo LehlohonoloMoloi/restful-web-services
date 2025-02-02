@@ -3,6 +3,7 @@ package com.zen.rest.webservices.restful_web_services.controller;
 import com.zen.rest.webservices.restful_web_services.exception.UserNotFoundException;
 import com.zen.rest.webservices.restful_web_services.model.User;
 import com.zen.rest.webservices.restful_web_services.service.UserService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -38,7 +39,7 @@ public class UserController {
     }
 
     @PostMapping("/users")
-    public ResponseEntity<User> createUser(@RequestBody User user) {
+    public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
          User savedUser = userService.save(user);
 
 //         URI location = URI.create(String.format("/users/%d", savedUser.getId()));
