@@ -3,6 +3,7 @@ package com.zen.rest.webservices.restful_web_services.service;
 import com.zen.rest.webservices.restful_web_services.exception.UserNotFoundException;
 import com.zen.rest.webservices.restful_web_services.model.Post;
 import com.zen.rest.webservices.restful_web_services.model.User;
+import com.zen.rest.webservices.restful_web_services.repository.PostRepository;
 import com.zen.rest.webservices.restful_web_services.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -14,6 +15,7 @@ import java.util.List;
 public class UserServiceImpl implements UserService {
 
     private final UserRepository userRepository;
+    private final PostRepository postRepository;
 
     @Override
     public List<User> findAll() {
@@ -40,6 +42,23 @@ public class UserServiceImpl implements UserService {
     public List<Post> retrievePostsForUser(int id) {
         User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(String.format("User with ID %d was not found",id)));
         return user.getPosts();
+    }
+
+    @Override
+    public Post createPostForUser(int id, Post post) {
+        User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(String.format("User with ID %d was not found",id)));
+        post.setUser(user);
+        return postRepository.save(post);
+    }
+
+    @Override
+    public Post retrieveUserPostById(int id, int postId) {
+        User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(String.format("User with ID %d was not found",id)));
+
+        return user.getPosts().stream()
+                .filter(post -> post.getId() == postId)
+                .findFirst()
+                .orElseThrow(() -> new UserNotFoundException(String.format("Post with ID %d was not found for user with ID %d",postId,id)));
     }
 
 }

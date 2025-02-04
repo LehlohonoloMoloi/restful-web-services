@@ -62,4 +62,27 @@ public class UserController {
         return userService.retrievePostsForUser(id);
     }
 
+    @PostMapping("/v1/users/{id}/posts")
+    public ResponseEntity<Post> createPostForUser(@PathVariable int id, @Valid @RequestBody Post post) {
+        Post savedPost = userService.createPostForUser(id, post);
+
+        URI location = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}")
+                .buildAndExpand(savedPost.getId())
+                .toUri();
+
+        return ResponseEntity.created(location).build();
+    }
+
+    @GetMapping("/v1/users/{id}/posts/{postId}")
+    public EntityModel<Post> retrieveUserPost(@PathVariable int id, @PathVariable int postId) {
+        Post post = userService.retrieveUserPostById(id, postId);
+
+        EntityModel<Post> entityModel = EntityModel.of(post);
+        WebMvcLinkBuilder linkBuilder = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).retrievePostsForUser(id));
+        entityModel.add(linkBuilder.withRel("all-user-posts"));
+
+        return entityModel;
+    }
+
 }

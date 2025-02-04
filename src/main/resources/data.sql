@@ -8,13 +8,13 @@ INSERT INTO user_details(ID, BIRTH_DATE, NAME)
 VALUES (10003, current_date(), 'Gator');
 
 INSERT INTO post(ID, USER_ID, DESCRIPTION)
-VALUES (1, 10001, 'First Post');
+VALUES (20001, 10001, 'First Post');
 
 INSERT INTO post(ID, USER_ID, DESCRIPTION)
-VALUES (2, 10001, 'Second Post');
+VALUES (20002, 10001, 'Second Post');
 
 INSERT INTO post(ID, USER_ID, DESCRIPTION)
-VALUES (3, 10002, 'I''m tired');
+VALUES (20003, 10002, 'I''m tired');
 
 INSERT INTO post(ID, USER_ID, DESCRIPTION)
-VALUES (4, 10003, 'Flippin loadshedding');
+VALUES (20004, 10003, 'Flippin loadshedding');
