@@ -1,1 +1,14 @@
-spring.application.name=restful-web-services
+spring:
+  application:
+  name: restful-web-services
+
+  h2:
+    console:
+      enabled: true
+
+  datasource:
+    url: jdbc:h2:mem:testdb
+
+  jpa:
+    defer-datasource-initialization: true
+    show-sql: true

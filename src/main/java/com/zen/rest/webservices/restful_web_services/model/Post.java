@@ -2,38 +2,32 @@ package com.zen.rest.webservices.restful_web_services.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Id;
-import jakarta.persistence.OneToMany;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
-import jakarta.validation.constraints.Past;
-import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-
-import java.time.LocalDate;
-import java.util.List;
+import lombok.ToString;
 
 @Entity
 @Getter
 @Setter
+@ToString
 @NoArgsConstructor
 @AllArgsConstructor
-@Table(name = "user_details")
-public class User {
+@Table(name = "post")
+public class Post {
     @Id
     @GeneratedValue
     private Integer id;
 
-    @Size(min = 2, message = "Name should have at least 2 characters")
-    private String name;
-
-    @Past(message = "Birth date should be in the past")
-    private LocalDate birthDate;
+    private String description;
 
     @JsonIgnore
-    @OneToMany(mappedBy = "user")
-    private List<Post> posts;
+    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
 }
