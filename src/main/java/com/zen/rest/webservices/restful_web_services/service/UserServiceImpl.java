@@ -1,5 +1,7 @@
 package com.zen.rest.webservices.restful_web_services.service;
 
+import com.zen.rest.webservices.restful_web_services.exception.UserNotFoundException;
+import com.zen.rest.webservices.restful_web_services.model.Post;
 import com.zen.rest.webservices.restful_web_services.model.User;
 import com.zen.rest.webservices.restful_web_services.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -26,12 +28,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public User findById(int id) {
-        return userRepository.findById(id).orElse(null);
+        return userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(String.format("User with ID %d was not found",id)));
     }
 
     @Override
     public void deleteById(int id) {
         userRepository.deleteById(id);
+    }
+
+    @Override
+    public List<Post> retrievePostsForUser(int id) {
+        User user = userRepository.findById(id).orElseThrow(() -> new UserNotFoundException(String.format("User with ID %d was not found",id)));
+        return user.getPosts();
     }
 
 }

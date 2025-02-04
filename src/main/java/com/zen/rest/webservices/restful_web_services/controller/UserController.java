@@ -1,6 +1,6 @@
 package com.zen.rest.webservices.restful_web_services.controller;
 
-import com.zen.rest.webservices.restful_web_services.exception.UserNotFoundException;
+import com.zen.rest.webservices.restful_web_services.model.Post;
 import com.zen.rest.webservices.restful_web_services.model.User;
 import com.zen.rest.webservices.restful_web_services.service.UserService;
 import jakarta.validation.Valid;
@@ -24,18 +24,14 @@ import java.util.List;
 public class UserController {
     private final UserService userService;
 
-     @GetMapping("/users")
+     @GetMapping("/v1/users")
     public List<User> retrieveAllUsers() {
          return userService.findAll();
      }
 
-    @GetMapping("/users/{id}")
+    @GetMapping("/v1/users/{id}")
     public EntityModel<User> retrieveUser(@PathVariable int id) {
         User user = userService.findById(id);
-
-        if (user == null) {
-            throw new UserNotFoundException(String.format("User with ID %d was not found",id));
-        }
 
         EntityModel<User> entityModel = EntityModel.of(user);
         WebMvcLinkBuilder linkBuilder = WebMvcLinkBuilder.linkTo(WebMvcLinkBuilder.methodOn(this.getClass()).retrieveAllUsers());
@@ -44,11 +40,10 @@ public class UserController {
         return entityModel;
     }
 
-    @PostMapping("/users")
+    @PostMapping("/v1/users")
     public ResponseEntity<User> createUser(@Valid @RequestBody User user) {
          User savedUser = userService.save(user);
 
-//         URI location = URI.create(String.format("/users/%d", savedUser.getId()));
         URI location = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}")
                 .buildAndExpand(savedUser.getId())
@@ -57,9 +52,14 @@ public class UserController {
          return ResponseEntity.created(location).build();
     }
 
-    @DeleteMapping("/users/{id}")
+    @DeleteMapping("/v1/users/{id}")
     public void deleteUser(@PathVariable int id) {
         userService.deleteById(id);
+    }
+
+    @GetMapping("/v1/users/{id}/posts")
+    public List<Post> retrievePostsForUser(@PathVariable int id) {
+        return userService.retrievePostsForUser(id);
     }
 
 }
