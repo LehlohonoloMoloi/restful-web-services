@@ -1,4 +1,4 @@
-package com.zen.rest.webservices.restful_web_services.security;
+package com.zen.rest.webservices.restfulwebservices.security;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;

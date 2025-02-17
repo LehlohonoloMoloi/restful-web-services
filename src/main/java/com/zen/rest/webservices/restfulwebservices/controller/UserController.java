@@ -1,8 +1,8 @@
-package com.zen.rest.webservices.restful_web_services.controller;
+package com.zen.rest.webservices.restfulwebservices.controller;
 
-import com.zen.rest.webservices.restful_web_services.model.Post;
-import com.zen.rest.webservices.restful_web_services.model.User;
-import com.zen.rest.webservices.restful_web_services.service.UserService;
+import com.zen.rest.webservices.restfulwebservices.model.Post;
+import com.zen.rest.webservices.restfulwebservices.model.User;
+import com.zen.rest.webservices.restfulwebservices.service.UserService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.hateoas.EntityModel;

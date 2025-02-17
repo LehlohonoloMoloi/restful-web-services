@@ -1,4 +1,4 @@
-package com.zen.rest.webservices.restful_web_services.exception;
+package com.zen.rest.webservices.restfulwebservices.exception;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

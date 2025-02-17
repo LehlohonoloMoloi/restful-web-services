@@ -1,4 +1,4 @@
-package com.zen.rest.webservices.restful_web_services.exception;
+package com.zen.rest.webservices.restfulwebservices.exception;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.ResponseStatus;

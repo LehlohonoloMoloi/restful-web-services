@@ -1,4 +1,4 @@
-package com.zen.rest.webservices.restful_web_services.model;
+package com.zen.rest.webservices.restfulwebservices.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.Entity;

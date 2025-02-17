@@ -1,10 +1,10 @@
-package com.zen.rest.webservices.restful_web_services.service;
+package com.zen.rest.webservices.restfulwebservices.service;
 
-import com.zen.rest.webservices.restful_web_services.exception.UserNotFoundException;
-import com.zen.rest.webservices.restful_web_services.model.Post;
-import com.zen.rest.webservices.restful_web_services.model.User;
-import com.zen.rest.webservices.restful_web_services.repository.PostRepository;
-import com.zen.rest.webservices.restful_web_services.repository.UserRepository;
+import com.zen.rest.webservices.restfulwebservices.exception.UserNotFoundException;
+import com.zen.rest.webservices.restfulwebservices.model.Post;
+import com.zen.rest.webservices.restfulwebservices.model.User;
+import com.zen.rest.webservices.restfulwebservices.repository.PostRepository;
+import com.zen.rest.webservices.restfulwebservices.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 

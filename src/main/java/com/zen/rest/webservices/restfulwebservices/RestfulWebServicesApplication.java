@@ -1,4 +1,4 @@
-package com.zen.rest.webservices.restful_web_services;
+package com.zen.rest.webservices.restfulwebservices;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

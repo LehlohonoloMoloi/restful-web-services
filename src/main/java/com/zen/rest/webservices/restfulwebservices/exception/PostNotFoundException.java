@@ -1,4 +1,4 @@
-package com.zen.rest.webservices.restful_web_services.exception;
+package com.zen.rest.webservices.restfulwebservices.exception;
 
 public class PostNotFoundException extends RuntimeException {
     public PostNotFoundException(String message) {

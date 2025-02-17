@@ -1,7 +1,7 @@
-package com.zen.rest.webservices.restful_web_services.service;
+package com.zen.rest.webservices.restfulwebservices.service;
 
-import com.zen.rest.webservices.restful_web_services.model.Post;
-import com.zen.rest.webservices.restful_web_services.model.User;
+import com.zen.rest.webservices.restfulwebservices.model.Post;
+import com.zen.rest.webservices.restfulwebservices.model.User;
 import jakarta.validation.Valid;
 
 import java.util.List;
