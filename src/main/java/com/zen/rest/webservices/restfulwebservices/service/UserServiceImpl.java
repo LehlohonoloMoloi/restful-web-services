@@ -1,5 +1,6 @@
 package com.zen.rest.webservices.restfulwebservices.service;
 
+import com.zen.rest.webservices.restfulwebservices.exception.PostNotFoundException;
 import com.zen.rest.webservices.restfulwebservices.exception.UserNotFoundException;
 import com.zen.rest.webservices.restfulwebservices.model.Post;
 import com.zen.rest.webservices.restfulwebservices.model.User;
@@ -58,7 +59,7 @@ public class UserServiceImpl implements UserService {
         return user.getPosts().stream()
                 .filter(post -> post.getId() == postId)
                 .findFirst()
-                .orElseThrow(() -> new UserNotFoundException(String.format("Post with ID %d was not found for user with ID %d",postId,id)));
+                .orElseThrow(() -> new PostNotFoundException(String.format("Post with ID %d was not found for user with ID %d",postId,id)));
     }
 
 }
